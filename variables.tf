@@ -8,5 +8,5 @@ variable "dept" {
 }
 variable "bucket_name" {
     type = string
-    default = "taxes"
+    default = "taxesveera"
 }
