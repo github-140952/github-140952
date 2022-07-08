@@ -60,16 +60,6 @@ output "IPlist" {
     value = aws_instance.moduleinstance1.0.private_ip
 }
 
-resource "aws_instance" "subnets" {
-    for_each = var.subnets
-    ami ="ami-0603cbe34fd08cb81"
-    instance_type = "t2.micro"
-    tags = {
-        Name = each.value
-        dept = local.myName
-    }
-}
-
 
 resource "aws_instance" "instancemap" {
     for_each = var.server_namesmap
