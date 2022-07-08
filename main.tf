@@ -51,11 +51,6 @@ resource "aws_instance" "moduleinstance1" {
     }
 }
 
-variable "subnets" {
-    type = set(string)    
-    default = ["veera","kishore"]
-}
-
 locals {
      myName = "veera"
      myvpcs = toset (["vpc1", "vpc2"])
@@ -63,14 +58,6 @@ locals {
 
 output "IPlist" {
     value = aws_instance.moduleinstance1.0.private_ip
-}
-
-resource "aws_vpc" "vpc"{
-    for_each = local.myvpcs
-    cidr_block = "10.0.0.0/28"
-    tags = {
-        name = each.value
-    }
 }
 
 resource "aws_instance" "subnets" {
